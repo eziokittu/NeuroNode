@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NotFound = () => {
   return (
     <div>
-      <div className='cursor-default min-h-[400px] sm:min-h-[600px] flex items-center justify-center bg-slate-200/20'>
+      <div className='lg:ml-64 cursor-default h-screen flex items-center justify-center bg-gray-800'>
         <div 
           className='group/g1 px-2 py-8 text-slate-300 hover:text-slate-100 mx-auto text-xl sm:text-4xl text-center rounded-lg hover:rounded-2xl w-4/5
           shadow-[0_0_10px_black] hover:shadow-[0_0_20px_black] transition-all duration-300 bg-black/20 hover:bg-black/30
@@ -23,7 +23,7 @@ const NotFound = () => {
       </div>  
       
       {/* Transperant gradient - change the height and colours acordingly*/}
-      <div className="h-44 sm:h-66 w-full bg-gradient-to-b from-slate-200/20 to-transparent"></div>
+      {/* <div className="h-44 sm:h-66 w-full bg-gradient-to-b from-slate-200/20 to-transparent"></div> */}
     </div>
   );
 }

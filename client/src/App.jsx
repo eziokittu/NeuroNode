@@ -1,12 +1,20 @@
 import React, {useEffect, useState} from 'react';
+import {BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { Element } from 'react-scroll';
+
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import Sidebar from './components/Sidebar/Sidebar';
+
+// Pages importing
+import Dashboard from './components/Body/Dashboard';
 import NotFound from './components/Body/NotFound';
-import { Element } from 'react-scroll';
-import {BrowserRouter, Routes, Route } from 'react-router-dom';
-import ServerStatus from './components/Reusable/ServerStatus';
-import BackgroundTransition from './components/Reusable/BackgroundTransition';
-import Home from './components/Body/Home';
+import Credits from './components/Body/Credits';
+import AI_CNN_1_catdog from './components/Body/Models/AI/AI_CNN_1_catdog';
+import AI_ANN_option1 from './components/Body/Models/AI/AI_ANN_option1';
+import Other_option1 from './components/Body/Models/Other/Other_option1';
+import ML_Regression_option1 from './components/Body/Models/ML/ML_Regression_option1';
+import ML_Classification_option1 from './components/Body/Models/ML/ML_Classification_option1';
 
 const App = () => {
   const [serverActive, setServerActive] = useState(false);
@@ -59,27 +67,27 @@ const App = () => {
 	}, []);
 
   return (
-		<>
-			<BackgroundTransition>
-				{/* Checking the server status - if the server, when HOSTED, is connected to the client or not */}
-				<ServerStatus serverActive={serverActive}/>
+		<div>
+			{/* Routing */}
+			<BrowserRouter>
+				<Navbar serverActive={serverActive}/>
+				<Sidebar serverActive={serverActive}/>
+				<Routes>
+					<Route path="*" element={<NotFound />} />
+					<Route exact path="/" element={<Dashboard />} />
+					<Route exact path="/dashboard" element={<Dashboard />} />
+					<Route exact path="/credits" element={<Credits />} />
 
-				{/* An opaque are below the server status */}
-				{/* <div className='fixed -top-10 z-10 blur-xl h-[100px] bg-gray-200 w-full' /> */}
+					<Route exact path="/models/ml/regression/1" element={<ML_Regression_option1 />} />
+					<Route exact path="/models/ml/classification/1" element={<ML_Classification_option1 />} />
+					<Route exact path="/models/ai/ann/1" element={<AI_ANN_option1 />} />
+					<Route exact path="/models/ai/cnn/1" element={<AI_CNN_1_catdog />} />
+					<Route exact path="/models/other/1" element={<Other_option1 />} />
 
-				{/* Routing */}
-				<BrowserRouter>
-					<Navbar />
-					<Routes>
-						<Route exact path="/" element={<Home serverActive={serverActive} />} />
-						<Route path="*" element={<NotFound />} />
-					</Routes>
-					<Element name='credits'>
-						<Footer />
-					</Element>
-				</BrowserRouter>
-			</BackgroundTransition>
-		</>
+				</Routes>
+				<Footer />
+			</BrowserRouter>
+		</div>
   )
 }
 
