@@ -10,14 +10,19 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Dashboard from './components/Body/Dashboard';
 import NotFound from './components/Body/NotFound';
 import Credits from './components/Body/Credits';
-import AI_CNN_1_catdog from './components/Body/Models/AI/AI_CNN_1_catdog';
-import AI_ANN_option1 from './components/Body/Models/AI/AI_ANN_option1';
+import DL_CNN_1_catdog from './components/Body/Models/DL/DL_CNN_1_catdog';
+import DL_ANN_option1 from './components/Body/Models/DL/DL_ANN_option1';
 import Other_option1 from './components/Body/Models/Other/Other_option1';
 import ML_Regression_option1 from './components/Body/Models/ML/ML_Regression_option1';
 import ML_Classification_option1 from './components/Body/Models/ML/ML_Classification_option1';
 
 const App = () => {
   const [serverActive, setServerActive] = useState(false);
+	const [sidebarOpen, setSidebaropen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebaropen(!sidebarOpen);
+  }
 
   // Function to format time
 	const formatTime = (timestamp) => {
@@ -70,8 +75,8 @@ const App = () => {
 		<div>
 			{/* Routing */}
 			<BrowserRouter>
-				<Navbar serverActive={serverActive}/>
-				<Sidebar serverActive={serverActive}/>
+				<Navbar serverActive={serverActive} toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen}/>
+				<Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 				<Routes>
 					<Route path="*" element={<NotFound />} />
 					<Route exact path="/" element={<Dashboard />} />
@@ -80,8 +85,8 @@ const App = () => {
 
 					<Route exact path="/models/ml/regression/1" element={<ML_Regression_option1 />} />
 					<Route exact path="/models/ml/classification/1" element={<ML_Classification_option1 />} />
-					<Route exact path="/models/ai/ann/1" element={<AI_ANN_option1 />} />
-					<Route exact path="/models/ai/cnn/1" element={<AI_CNN_1_catdog />} />
+					<Route exact path="/models/dl/ann/1" element={<DL_ANN_option1 />} />
+					<Route exact path="/models/dl/cnn/1" element={<DL_CNN_1_catdog />} />
 					<Route exact path="/models/other/1" element={<Other_option1 />} />
 
 				</Routes>
@@ -92,3 +97,5 @@ const App = () => {
 }
 
 export default App
+
+// colours

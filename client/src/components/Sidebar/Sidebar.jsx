@@ -1,60 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Sidebar = ({serverActive}) => {
-  const [sidebarOpen, setSidebaropen] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebaropen(!sidebarOpen);
-  }
+const Sidebar = ({sidebarOpen, toggleSidebar}) => {
+  
 
   return (
     <div className='relative top-6  text-slate-200'>
 
       {/* sidebar open icon */}
-      <div className='bg-gray-800 w-fit lg:hidden fixed top-6'>
+      {/* <div className='bg-gray-800 w-fit lg:hidden fixed top-6'>
         {!sidebarOpen && (
           <div className=' flex flex-row gap-4'>
-            <div className={`sm:hidden block`}>
-              {serverActive ? (
-                <p className='text-green-500 font-bold'>🟢</p>
-              ) : (
-                <p className='text-red-500 font-bold'>🔴</p>
-              )}
+            <div onClick={toggleSidebar}>
+              <svg className='w-8 h-8' fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M6.001 7.128L6 10.438l19.998-.005L26 7.124zM6.001 21.566L6 24.876l19.998-.006.002-3.308zM6.001 14.341L6 17.65l19.998-.004.002-3.309z"></path></g></svg>
             </div>
-            <div onClick={toggleSidebar}>open</div>
           </div>
         )}
-      </div>
+      </div> */}
       
       {/* Sidebar Menu*/}
-      <div className={`lg:w-64 ${sidebarOpen ? 'w-5/6 sm:w-3/5 md:w-64' : 'w-0'} bg-gray-800 fixed top-6 h-full flex flex-col`}>
-        {/* sidebar open icon */}
-        <div className='flex flex-row'>
-          {sidebarOpen && (
-            <div className={`sm:hidden block`}>
-              {serverActive ? (
-                <p className='text-green-500 font-bold'>Server active 🟢</p>
-              ) : (
-                <p className='text-red-500 font-bold'>Server Loading 🔴</p>
-              )}
-            </div>
-          )}
-          <div
-            className={`lg:hidden ${sidebarOpen ? '' : 'hidden'}  ml-auto mr-4`}
-            onClick={toggleSidebar}
-          >close</div>
-        </div>
+      <div className={`lg:w-64 ${sidebarOpen ? 'w-5/6 sm:w-3/5 md:w-64' : 'w-0'} bg-transparent fixed top-6 h-full flex flex-row`}>
 
         {/* Menu options */}
-        <ul className='h-full overflow-scroll pt-2'>
+        <ul className='h-full w-full overflow-scroll pt-2 bg-mydark1/95 lg:bg-mydark1'>
 
           {/* Dashboard - like the home page */}
-          <li className='text-center cursor-pointer hover:text-green-500'>
-            <Link to={'/dashboard'}>Dashboard</Link>
+          <li className='text-center cursor-pointer hover:text-mygreen'>
+            <Link to={'/dashboard'} onClick={toggleSidebar}>Dashboard</Link>
           </li>
-          <li className='text-center cursor-pointer hover:text-green-500'>
-            <Link to={'/credits'}>Credits</Link>
+          <li className='text-center cursor-pointer hover:text-mygreen'>
+            <Link to={'/credits'} onClick={toggleSidebar}>Credits</Link>
           </li>
 
           {/* All ML Models */}
@@ -64,37 +39,37 @@ const Sidebar = ({serverActive}) => {
             {/* Regression Models */}
             <li className='pl-4 pt-4'>Regression Models</li>
             <ul>
-              <li className='pl-8 cursor-pointer hover:text-green-500'>
-                <Link to={'/models/ml/regression/1'}>Option 1</Link>
+              <li className='pl-8 cursor-pointer hover:text-mygreen'>
+                <Link to={'/models/ml/regression/1'} onClick={toggleSidebar}>Option 1</Link>
               </li>
             </ul>
 
             {/* Classification Models */}
             <li className='pl-4 pt-4'>Classification Models</li>
             <ul>
-              <li className='pl-8 cursor-pointer hover:text-green-500'>
-                <Link to={'/models/ml/classification/1'}>Option 1</Link>
+              <li className='pl-8 cursor-pointer hover:text-mygreen'>
+                <Link to={'/models/ml/classification/1'} onClick={toggleSidebar}>Option 1</Link>
               </li>
             </ul>
           </ul>
 
-          {/* All AI Models */}
-          <li className='font-bold mt-8 border-slate-500 border-y-2 text-center'>Artificial Intelligence</li>
+          {/* All DL Models */}
+          <li className='font-bold mt-8 border-slate-500 border-y-2 text-center'>Deep Learning</li>
           <ul>
 
             {/* ANN Models */}
             <li className='pl-4 pt-4'>ANN Models</li>
             <ul>
-              <li className='pl-8 cursor-pointer hover:text-green-500'>
-                <Link to={'/models/ai/ann/1'}>Option 1</Link>
+              <li className='pl-8 cursor-pointer hover:text-mygreen'>
+                <Link to={'/models/dl/ann/1'} onClick={toggleSidebar}>Option 1</Link>
               </li>
             </ul>
 
             {/* CNN Models */}
             <li className='pl-4 pt-4'>CNN Models</li>
             <ul>
-              <li className='pl-8 cursor-pointer hover:text-green-500'>
-                <Link to={'/models/ai/cnn/1'}>Cat Dog Classification 1</Link>
+              <li className='pl-8 cursor-pointer hover:text-mygreen'>
+                <Link to={'/models/dl/cnn/1'} onClick={toggleSidebar}>Cat Dog Classification 1</Link>
               </li>
             </ul>
           </ul>
@@ -102,13 +77,24 @@ const Sidebar = ({serverActive}) => {
           {/* Other Models */}
           <li className='font-bold mt-8 border-slate-500 border-y-2 text-center'>Other / Testing</li>
           <ul className='pt-4'>
-            <li className='pl-8 cursor-pointer hover:text-green-500'>Option 1</li>
-            <li className='pl-8 cursor-pointer hover:text-green-500'>Option 2</li>
+            <li className='pl-8 cursor-pointer hover:text-mygreen'>Option 1</li>
+            <li className='pl-8 cursor-pointer hover:text-mygreen'>Option 2</li>
           </ul>
 
           <p className='h-16'></p>
 
         </ul>
+
+        {/* sidebar close icon */}
+        <div 
+          className='flex flex-row lg:hidden w-8 h-full items-center animate-pulse bg-slate-800/60 group hover:bg-slate-800/90'
+          onClick={toggleSidebar}
+        >
+          <div className={`lg:hidden ${sidebarOpen ? '' : 'hidden'} w-8 group-hover:text-mygreen `}>
+            <svg viewBox="0 0 1024 1024" className='w-8 h-8 group-hover:w-10 group-hover:h-10 group-hover:-translate-x-1' version="1.1" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="currentColor"></path></g></svg>
+          </div>
+        </div>
+
       </div>
 
     </div>

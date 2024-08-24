@@ -13,6 +13,12 @@ module.exports = {
       },
       fontFamily: {
         'Roboto': ["Roboto", 'sans-serif']
+      },
+      colors: {
+        "mygreen": "#22c55e",
+        "mylight1": "#e2e8f0",
+        "mydark1": "#1e293b",
+        "mydark2": "#334155",
       }
     },
   },
