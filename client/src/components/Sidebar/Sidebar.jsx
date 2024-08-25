@@ -5,21 +5,10 @@ const Sidebar = ({sidebarOpen, toggleSidebar}) => {
   
 
   return (
-    <div className='relative top-6  text-slate-200'>
-
-      {/* sidebar open icon */}
-      {/* <div className='bg-gray-800 w-fit lg:hidden fixed top-6'>
-        {!sidebarOpen && (
-          <div className=' flex flex-row gap-4'>
-            <div onClick={toggleSidebar}>
-              <svg className='w-8 h-8' fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M6.001 7.128L6 10.438l19.998-.005L26 7.124zM6.001 21.566L6 24.876l19.998-.006.002-3.308zM6.001 14.341L6 17.65l19.998-.004.002-3.309z"></path></g></svg>
-            </div>
-          </div>
-        )}
-      </div> */}
+    <div className='relative text-slate-200'>
       
       {/* Sidebar Menu*/}
-      <div className={`lg:w-64 ${sidebarOpen ? 'w-5/6 sm:w-3/5 md:w-64' : 'w-0'} bg-transparent fixed top-6 h-full flex flex-row`}>
+      <div className={`lg:w-64 ${sidebarOpen ? 'w-5/6 sm:w-3/5 md:w-64' : 'w-0'} bg-transparent fixed top-12 h-full flex flex-row`}>
 
         {/* Menu options */}
         <ul className='h-full w-full overflow-scroll pt-2 bg-mydark1/95 lg:bg-mydark1'>

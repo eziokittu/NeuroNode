@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = ({ serverActive, sidebarOpen, toggleSidebar }) => {
   return (
-    <div className='fixed z-10 top-0 h-6 bg-mydark1 w-full px-2 flex flex-row justify-between items-center text-mylight1 border-y border-mylight1'>
+    <div className='fixed z-10 top-0 h-12 bg-mydark1 w-full px-2 flex flex-row justify-between items-center text-mylight1 border-y border-mylight1'>
 
       {/* Sidebar open icon */}
       {!sidebarOpen ? (
@@ -17,10 +17,15 @@ const Navbar = ({ serverActive, sidebarOpen, toggleSidebar }) => {
       )}
 
       {/* Website Name */}
-      <div className='mx-auto text-center'>
-        <p className='hover:text-mygreen font-bold text-xl'>
-          <Link to={'/'}>NeuroNode</Link>
-        </p>
+      <div className='mx-auto '>
+        <Link to={'/'} className='flex flex-row group items-center gap-1'>
+          <p className='group-hover:text-mygreen font-bold text-xl pb-1'>Neur</p>
+          <img 
+            src='/icon_neuronode.svg' 
+            className='w-10 h-10 rounded-full animate-[spin_2s_linear_infinite]
+            border-mylight1 group-hover:border-mygreen border-4' />
+          <p className='group-hover:text-mygreen font-bold text-xl pb-1'>Node</p>
+        </Link>
       </div>
 
       {/* Server status */}
