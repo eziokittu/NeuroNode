@@ -3,13 +3,13 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom';
 // import { Element } from 'react-scroll';
 
 import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
+// import Footer from './components/Footer/Footer';
 import Sidebar from './components/Sidebar/Sidebar';
 
 // Pages importing
 import Dashboard from './components/Body/Dashboard';
 import NotFound from './components/Body/NotFound';
-import Credits from './components/Body/Credits';
+import Credits from './components/Body/Credits/Credits';
 import DL_CNN_1_catdog from './components/Body/Models/DL/DL_CNN_1_catdog';
 import DL_ANN_option1 from './components/Body/Models/DL/DL_ANN_option1';
 import Other_option1 from './components/Body/Models/Other/Other_option1';
@@ -90,7 +90,7 @@ const App = () => {
 					<Route exact path="/models/other/1" element={<Other_option1 />} />
 
 				</Routes>
-				<Footer />
+				{/* <Footer /> */}
 			</BrowserRouter>
 		</div>
   )
