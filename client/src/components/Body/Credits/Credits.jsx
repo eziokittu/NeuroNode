@@ -5,7 +5,7 @@ import projectMembers from '../../../data/projectMembers.json';
 
 const Credits = () => {
   return (
-    <div className=' bg-mydark2 text-mylight1 mt-12 pt-6 flex flex-col'>
+    <div className=' bg-mydark2 text-mylight1 mt-12 pt-6 flex flex-col lg:ml-64'>
       
       {/* Heading */}
       <PageHeadings heading={"Credits Page"} isLarge={true}/>
