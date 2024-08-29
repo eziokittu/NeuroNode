@@ -15,6 +15,7 @@ import DL_ANN_option1 from './components/Body/Models/DL/DL_ANN_option1';
 import Other_option1 from './components/Body/Models/Other/Other_option1';
 import ML_Regression_option1 from './components/Body/Models/ML/ML_Regression_option1';
 import ML_Classification_option1 from './components/Body/Models/ML/ML_Classification_option1';
+import ML_StudentPerformance from './components/Body/Models/ML/ML_StudentPerformance';
 
 const App = () => {
   const [serverActive, setServerActive] = useState(false);
@@ -83,7 +84,7 @@ const App = () => {
 					<Route exact path="/dashboard" element={<Dashboard />} />
 					<Route exact path="/credits" element={<Credits />} />
 
-					<Route exact path="/models/ml/regression/1" element={<ML_Regression_option1 />} />
+					<Route exact path="/models/ml/regression/1" element={<ML_StudentPerformance />} />
 					<Route exact path="/models/ml/classification/1" element={<ML_Classification_option1 />} />
 					<Route exact path="/models/dl/ann/1" element={<DL_ANN_option1 />} />
 					<Route exact path="/models/dl/cnn/1" element={<DL_CNN_1_catdog />} />

@@ -29,7 +29,7 @@ const Sidebar = ({sidebarOpen, toggleSidebar}) => {
             <li className='pl-4 pt-4'>Regression Models</li>
             <ul>
               <li className='pl-8 cursor-pointer hover:text-mygreen'>
-                <Link to={'/models/ml/regression/1'} onClick={toggleSidebar}>Option 1</Link>
+                <Link to={'/models/ml/regression/1'} onClick={toggleSidebar}>Student Performance</Link>
               </li>
             </ul>
 
