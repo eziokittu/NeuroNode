@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FormSubmitButton from './FormSubmitButton';
 
 const FileUpload = ({ api, heading }) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -59,12 +60,7 @@ const FileUpload = ({ api, heading }) => {
         </div>
       )}
 
-      <button
-        type="submit"
-        className="bg-blue-500 text-white py-2 px-4 rounded-lg w-full hover:bg-blue-600 transition duration-300"
-      >
-        Upload Image
-      </button>
+      <FormSubmitButton name={'Upload Image'} />
     </form>
   );
 };
