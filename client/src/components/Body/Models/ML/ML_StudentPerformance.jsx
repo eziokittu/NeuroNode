@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
+import FormSubmitButton from "../../../Reusable/FormSubmitButton";
+import FormInputOptions from "../../../Reusable/FormInputOptions";
+import FormInputNumber from "../../../Reusable/FormInputNumber";
+import PageTextArea from "../../../Reusable/PageTextArea";
 
 const ML_StudentPerformance = () => {
   const [formData, setFormData] = useState({
     gender: "male",
-    ethnicity: "group A",
+    ethnicity: "group C",
     parental_level_of_education: "bachelor's degree",
     lunch: "standard",
     test_preparation_course: "none",
-    // math_score: 0,
     reading_score: 0,
     writing_score: 0,
   });
@@ -26,27 +29,17 @@ const ML_StudentPerformance = () => {
     return () => clearTimeout(timer); // Clean up timer
   }, [formData.reading_score, formData.writing_score]);
 
+  // function to submit the form and call the API
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const testFormData = new FormData();
-    testFormData.append("gender", formData.gender);
-    testFormData.append("ethnicity", formData.ethnicity);
-    testFormData.append("parental_level_of_education", formData.parental_level_of_education);
-    testFormData.append("lunch", formData.lunch);
-    testFormData.append("test_preparation_course", formData.test_preparation_course);
-    testFormData.append("reading_score", formData.reading_score);
-    testFormData.append("writing_score", formData.writing_score);
-
     try {
-
       // Send the form data as multipart/form-data
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/predict2`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
         },
-        // body: testFormData
         body: JSON.stringify({
           gender: formData.gender,
           ethnicity: formData.ethnicity,
@@ -67,7 +60,6 @@ const ML_StudentPerformance = () => {
     }
   };
 
-  
   // Handle form data change
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -75,130 +67,97 @@ const ML_StudentPerformance = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 lg:ml-64 mt-12 py-12">
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/2 ">
+    <div className="flex flex-col items-center min-h-screen bg-mydark2 lg:ml-64 mt-12 py-12">
+
+      {/* Some info about the model */}
+      <PageTextArea 
+        heading={'Student Performance Model'}
+        body={"This is a regression model created to predict a student's math score based on their gender, ethnicity, parents' educational background, and their scores in reading and writing. To build the most accurate model, various algorithms like CatBoost, AdaBoost, Gradient Boosting, Random Forest, Linear Regression, K-Nearest Neighbors, Decision Trees, and XGBoost were experimented with. By comparing the performance of these models, the one that consistently produced the most reliable predictions was selected."}
+        developedBy={'Anuroop'}
+      />
+
+      {/* Prediction Form */}
+      <form 
+        onSubmit={handleSubmit} 
+        className="bg-mylight1 p-2 sm:p-6 rounded-lg shadow-lg w-5/6 md:w-1/2 flex flex-col gap-6"
+      >
         <h2 className="text-2xl font-bold mb-4 text-center">Student Performance Prediction</h2>
 
-        <div className="mb-4">
-          <label className="block mb-2 font-semibold">Gender</label>
-          <select
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-lg"
-          >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
+        {/* input - Gender */}
+        <FormInputOptions 
+          labelName={'Gender'} 
+          inputName={'gender'}
+          options={["Male", "Female"]} 
+          values={["male", "female"]} 
+          handleChange={handleChange} 
+          value={formData.gender}
+        />
 
-        <div className="mb-4">
-          <label className="block mb-2 font-semibold">Race/Ethnicity</label>
-          <select
-            name="ethnicity"
-            value={formData.ethnicity}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-lg"
-          >
-            <option value="group A">Group A</option>
-            <option value="group B">Group B</option>
-            <option value="group C">Group C</option>
-            <option value="group D">Group D</option>
-            <option value="group E">Group E</option>
-          </select>
-        </div>
+        {/* Input - Race/Ethnicity */}
+        <FormInputOptions 
+          labelName={'Race/Ethnicity'} 
+          inputName={'ethnicity'}
+          options={["Group A", "Group B", "Group C", "Group D", "Group E"]} 
+          values={["group A", "group B", "group C", "group D", "group E"]} 
+          handleChange={handleChange} 
+          value={formData.ethnicity}
+        />
 
-        <div className="mb-4">
-          <label className="block mb-2 font-semibold">Parental Level of Education</label>
-          <select
-            name="parental_level_of_education"
-            value={formData.parental_level_of_education}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-lg"
-          >
-            <option value="bachelor's degree">Bachelor's Degree</option>
-            <option value="some college">Some College</option>
-            <option value="master's degree">Master's Degree</option>
-            <option value="associate's degree">Associate's Degree</option>
-            <option value="high school">High School</option>
-            <option value="some high school">Some High School</option>
-          </select>
-        </div>
+        {/* Input - Parental Level of Education */}
+        <FormInputOptions 
+          labelName={'Parental Level of Education'} 
+          inputName={'parental_level_of_education'}
+          options={["Bachelor's Degree", "Some College", "Master's Degree", "Associate's Degree", "High School", "Some High School"]} 
+          values={["bachelor's degree", "some college", "master's degree", "associate's degree", "high school", "some high school"]} 
+          handleChange={handleChange} 
+          value={formData.parental_level_of_education}
+        />
 
-        <div className="mb-4">
-          <label className="block mb-2 font-semibold">Lunch</label>
-          <select
-            name="lunch"
-            value={formData.lunch}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-lg"
-          >
-            <option value="standard">Standard</option>
-            <option value="free/reduced">Free/Reduced</option>
-          </select>
-        </div>
+        {/* input - Lunch */}
+        <FormInputOptions 
+          labelName={'Lunch'} 
+          inputName={'lunch'}
+          options={['Standard', 'Free/Reduced']} 
+          values={['standard', 'free/reduced']}
+          handleChange={handleChange} 
+          value={formData.lunch}
+        />
 
-        <div className="mb-4">
-          <label className="block mb-2 font-semibold">Test Preparation Course</label>
-          <select
-            name="test_preparation_course"
-            value={formData.test_preparation_course}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-lg"
-          >
-            <option value="none">None</option>
-            <option value="completed">Completed</option>
-          </select>
-        </div>
+        {/* Input - Test Preparation Course */}
+        <FormInputOptions 
+          labelName={'Test Preparation Course'} 
+          inputName={'test_preparation_course'}
+          options={['None', 'Completed']} 
+          values={['none', 'completed']}
+          handleChange={handleChange} 
+          value={formData.test_preparation_course}
+        />
 
-        {/* <div className="mb-4">
-          <label className="block mb-2 font-semibold">Math Score</label>
-          <input
-            type="number"
-            name="math_score"
-            value={formData.math_score}
-            onChange={handleChange}
-            min="0"
-            max="100"
-            step="1"
-            className="w-full p-2 border rounded-lg"
-          />
-        </div> */}
+        {/* Input - Reading Score */}
+        <FormInputNumber 
+          labelName={'Reading Score'}
+          inputName={'reading_score'}
+          value={formData.reading_score}
+          handleChange={handleChange}
+          inputMin={"0"}
+          inputMax={"100"}
+          inputStep={"1"}
+        />
 
-        <div className="mb-4">
-          <label className="block mb-2 font-semibold">Reading Score</label>
-          <input
-            type="number"
-            name="reading_score"
-            value={formData.reading_score}
-            onChange={handleChange}
-            min="0"
-            max="100"
-            step="1"
-            className="w-full p-2 border rounded-lg"
-          />
-        </div>
+        {/* Input - Writing Score */}
+        <FormInputNumber 
+          labelName={'Writing Score'}
+          inputName={'writing_score'}
+          value={formData.writing_score}
+          handleChange={handleChange}
+          inputMin={"0"}
+          inputMax={"100"}
+          inputStep={"1"}
+        />
 
-        <div className="mb-4">
-          <label className="block mb-2 font-semibold">Writing Score</label>
-          <input
-            type="number"
-            name="writing_score"
-            value={formData.writing_score}
-            onChange={handleChange}
-            min="0"
-            max="100"
-            step="1"
-            className="w-full p-2 border rounded-lg"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition duration-300"
-        >
-          Submit Form
-        </button>
+        {/* Button - Form Submit */}
+        <FormSubmitButton name={'Predict Maths Score'} />
+        
       </form>
     </div>
   );

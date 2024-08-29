@@ -13,7 +13,6 @@ import Credits from './components/Body/Credits/Credits';
 import DL_CNN_1_catdog from './components/Body/Models/DL/DL_CNN_1_catdog';
 import DL_ANN_option1 from './components/Body/Models/DL/DL_ANN_option1';
 import Other_option1 from './components/Body/Models/Other/Other_option1';
-import ML_Regression_option1 from './components/Body/Models/ML/ML_Regression_option1';
 import ML_Classification_option1 from './components/Body/Models/ML/ML_Classification_option1';
 import ML_StudentPerformance from './components/Body/Models/ML/ML_StudentPerformance';
 
@@ -66,7 +65,7 @@ const App = () => {
 		checkServerReady();
 
 		// Set the interval to continuously check server status
-		const intervalId = setInterval(checkServerReady, 60000); // Check every 60 seconds
+		const intervalId = setInterval(checkServerReady, 5*60*1000); // Check every 5 mins
 
 		// Clean up interval on component unmount
 		return () => clearInterval(intervalId);

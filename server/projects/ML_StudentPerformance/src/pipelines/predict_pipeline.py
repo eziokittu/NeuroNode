@@ -1,10 +1,11 @@
 import sys
+import os
 import pandas as pd
 from projects.ML_StudentPerformance.src.exception import CustomException
 from projects.ML_StudentPerformance.src.utils import load_object
 
-model_path = 'projects\\ML_StudentPerformance\\artifacts\\model.pkl'
-preprocessor_path = 'projects\\ML_StudentPerformance\\artifacts\\preprocessor.pkl'
+model_path = 'projects/ML_StudentPerformance/artifacts/model.pkl'
+preprocessor_path = 'projects/ML_StudentPerformance/artifacts/preprocessor.pkl'
 
 class PredictPipeline():
     def __init__(self):

@@ -1,16 +1,20 @@
 import React from 'react';
 import FileUpload from '../../../Reusable/FileUpload';
+import PageTextArea from '../../../Reusable/PageTextArea';
 
 const DL_CNN_1_catdog = () => {
   return (
     <div
-      className='h-screen bg-blue-400 mt-6 pt-6 lg:ml-64 px-2 sm:px-4'
+      className='flex flex-col items-center  min-h-screen bg-mydark2 lg:ml-64 mt-12 py-12'
     >
-      <p>DL CNN model for cat dog classification done here</p>
+      <PageTextArea 
+        heading={'Cat/Dog Classification Model'}
+        body={"This is a CNN model for classifying images of Cats and Dogs. The accuracy isn't great but classifying correctly most of the times."}
+        developedBy={'Bodhisatta'}
+      />
 
-      <div>
-        <FileUpload api={'/api/predict1'} heading={'Upload a cat/dog Image'}/>
-      </div>
+      {/* Component to upload an image and get the predicted result */}
+      <FileUpload api={'/api/predict1'} heading={'Upload a cat/dog Image'}/>
     </div>
   )
 }

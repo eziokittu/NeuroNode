@@ -43,7 +43,7 @@ const FileUpload = ({ api, heading }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-3 md:p-6 rounded-lg shadow-md w-52 md:w-80">
+    <form onSubmit={handleSubmit} className="bg-mylight1 p-2 sm:p-6 rounded-lg shadow-lg w-5/6 md:w-1/2 flex flex-col gap-6">
       <h2 className="text-xl font-bold mb-4 text-center">{heading}</h2>
 
       <input

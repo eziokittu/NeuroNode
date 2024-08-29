@@ -29,16 +29,16 @@ const Sidebar = ({sidebarOpen, toggleSidebar}) => {
             <li className='pl-4 pt-4'>Regression Models</li>
             <ul>
               <li className='pl-8 cursor-pointer hover:text-mygreen'>
-                <Link to={'/models/ml/regression/1'} onClick={toggleSidebar}>Student Performance</Link>
+                <Link to={'/models/ml/regression/1'} onClick={toggleSidebar}>● Student Performance</Link>
               </li>
             </ul>
 
             {/* Classification Models */}
             <li className='pl-4 pt-4'>Classification Models</li>
             <ul>
-              <li className='pl-8 cursor-pointer hover:text-mygreen'>
+              {/* <li className='pl-8 cursor-pointer hover:text-mygreen'>
                 <Link to={'/models/ml/classification/1'} onClick={toggleSidebar}>Option 1</Link>
-              </li>
+              </li> */}
             </ul>
           </ul>
 
@@ -49,26 +49,26 @@ const Sidebar = ({sidebarOpen, toggleSidebar}) => {
             {/* ANN Models */}
             <li className='pl-4 pt-4'>ANN Models</li>
             <ul>
-              <li className='pl-8 cursor-pointer hover:text-mygreen'>
+              {/* <li className='pl-8 cursor-pointer hover:text-mygreen'>
                 <Link to={'/models/dl/ann/1'} onClick={toggleSidebar}>Option 1</Link>
-              </li>
+              </li> */}
             </ul>
 
             {/* CNN Models */}
             <li className='pl-4 pt-4'>CNN Models</li>
             <ul>
               <li className='pl-8 cursor-pointer hover:text-mygreen'>
-                <Link to={'/models/dl/cnn/1'} onClick={toggleSidebar}>Cat Dog Classification 1</Link>
+                <Link to={'/models/dl/cnn/1'} onClick={toggleSidebar}>● Cat Dog Classification</Link>
               </li>
             </ul>
           </ul>
 
           {/* Other Models */}
-          <li className='font-bold mt-8 border-slate-500 border-y-2 text-center'>Other / Testing</li>
+          {/* <li className='font-bold mt-8 border-slate-500 border-y-2 text-center'>Other / Testing</li>
           <ul className='pt-4'>
             <li className='pl-8 cursor-pointer hover:text-mygreen'>Option 1</li>
             <li className='pl-8 cursor-pointer hover:text-mygreen'>Option 2</li>
-          </ul>
+          </ul> */}
 
           <p className='h-16'></p>
 

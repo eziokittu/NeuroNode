@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import pandas as pd
+import numpy as np
 from projects.DL_CatDog.DL_CatDog import preprocess_image, read_image, model_DL_CatDog
 from projects.ML_StudentPerformance.ML_StudentPerformace import predict_student_performance, create_custom_data, form1
 
@@ -37,7 +38,7 @@ async def predict_DL_CatDog(file: UploadFile = File(...)):
 # New Prediction route for ML_StudentPerformance
 @app.post("/api/predict2")
 async def predict_student_performance_api(request: form1):
-    print(request, end='\n\n\n\n')
+    # print(request, end='\n\n\n\n')
     try:
         # Create the CustomData object
         custom_data = create_custom_data(
