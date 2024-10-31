@@ -12,9 +12,9 @@ const Dashboard = () => {
       />
 
       <PageTextArea
-        heading={"2 Models Available"}
+        heading={"3 Models Available"}
         body={
-          "Currently there are 2 models available. A Student's maths marks Prediction Model and a Cat Dog classification model. The github links to the models, accuracy charts, other key points of interest will be added later on."
+          "Currently there are 3 models available - A Student's maths marks Prediction Model; a Cat Dog Classification Model; a Diabetes Prediction Model. The github links to the models, accuracy charts, other key points of interest will be added later on."
         }
       />
 

@@ -19,6 +19,9 @@ const Credits = () => {
 
         {/* Bodhisatta's Profile Card */}
         <CreditsMemberCard member={projectMembers.bodhisatta}/>
+
+        {/* Saurabh's Profile Card */}
+        <CreditsMemberCard member={projectMembers.saurav}/>
       </div>
 
     </div>

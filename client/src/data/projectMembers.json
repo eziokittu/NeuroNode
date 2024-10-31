@@ -26,5 +26,19 @@
       "link_website": "-",
       "link_instagram": "-"
     }
+  },
+  "saurav" : {
+    "firstname": "Saurabh",
+    "lastname": "Bandopadhyay",
+    "bio": "I’m Saurabh Bandyopadhyay, a data science enthusiast with machine learning experience from a CodeClause internship. I’m focused on building skills to create impactful data-driven solutions.",
+    "email_primary": "anantrock55555@gmail.com",
+    "email_secondary": "21051059@kiit.ac.in",
+    "image": "memberImages/saurabh.jpg",
+    "links": {
+      "link_linkedin": "https://www.linkedin.com/in/saurabh-bandyopadhyay-810aa4233/",
+      "link_github": "https://github.com/anantsaurabh11",
+      "link_website": "https://anantsaurabh11.github.io/portfolio/",
+      "link_instagram": "https://www.instagram.com/its_me_100_rabh/"
+    }
   }
 }

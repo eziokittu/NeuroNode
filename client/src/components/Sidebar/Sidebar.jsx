@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Sidebar = ({sidebarOpen, toggleSidebar}) => {
-  
+const Sidebar = ({ sidebarOpen, toggleSidebar }) => {
+
 
   return (
     <div className='relative text-slate-200'>
-      
+
       {/* Sidebar Menu*/}
       <div className={`lg:w-64 ${sidebarOpen ? 'w-5/6 sm:w-3/5 md:w-64' : 'w-0'} bg-transparent fixed top-12 h-full flex flex-row`}>
 
@@ -36,9 +36,9 @@ const Sidebar = ({sidebarOpen, toggleSidebar}) => {
             {/* Classification Models */}
             <li className='pl-4 pt-4'>Classification Models</li>
             <ul>
-              {/* <li className='pl-8 cursor-pointer hover:text-mygreen'>
-                <Link to={'/models/ml/classification/1'} onClick={toggleSidebar}>Option 1</Link>
-              </li> */}
+              <li className='pl-8 cursor-pointer hover:text-mygreen'>
+                <Link to={'/models/ml/classification/1'} onClick={toggleSidebar}>● Diabetes Prediction</Link>
+              </li>
             </ul>
           </ul>
 
@@ -75,7 +75,7 @@ const Sidebar = ({sidebarOpen, toggleSidebar}) => {
         </ul>
 
         {/* sidebar close icon */}
-        <div 
+        <div
           className='flex flex-row lg:hidden w-8 h-full items-center animate-pulse bg-slate-800/60 group hover:bg-slate-800/90'
           onClick={toggleSidebar}
         >
