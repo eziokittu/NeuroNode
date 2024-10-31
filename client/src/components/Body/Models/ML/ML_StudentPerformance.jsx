@@ -29,6 +29,8 @@ const ML_StudentPerformance = () => {
     return () => clearTimeout(timer); // Clean up timer
   }, [formData.reading_score, formData.writing_score]);
 
+  const [resultString, setResultString] = useState("");
+
   // function to submit the form and call the API
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -53,6 +55,7 @@ const ML_StudentPerformance = () => {
       });
 
       const result = await response.json();
+      setResultString(`Predicted Maths Score: ${Math.max(0, Math.min(100, Math.round(result.prediction)))}`);
       alert(`Predicted Maths Score: ${Math.max(0, Math.min(100, Math.round(result.prediction)))}`);
     } catch (error) {
       console.error("Error:", error);
@@ -67,7 +70,7 @@ const ML_StudentPerformance = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-mydark2 lg:ml-64 mt-12 py-12">
+    <div className="flex flex-col items-center min-h-screen bg-mydark2 lg:ml-64 mt-12 py-12 gap-4">
 
       {/* Some info about the model */}
       <PageTextArea 
@@ -159,6 +162,14 @@ const ML_StudentPerformance = () => {
         <FormSubmitButton name={'Predict Maths Score'} />
         
       </form>
+
+      {resultString !== "" && (
+        <PageTextArea 
+          heading={'Prediction Result'}
+          body={resultString}
+          isResult={true}
+        />
+      )}
     </div>
   );
 };

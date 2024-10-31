@@ -21,19 +21,21 @@ const ML_DiabetesPrediction = () => {
     const timer = setTimeout(() => {
       setFormData((prevData) => ({
         ...prevData,
-        Pregnancies: Math.max(0, prevData.Pregnancies),
-        Glucose: Math.max(0, prevData.Glucose),
-        BloodPressure: Math.max(0, prevData.BloodPressure),
-        SkinThickness: Math.max(0, prevData.SkinThickness),
-        Insulin: Math.max(0, prevData.Insulin),
-        BMI: Math.max(0, Math.round(prevData.BMI)),
-        DiabetesPedigreeFunction: Math.max(0, Math.round(prevData.DiabetesPedigreeFunction)),
-        Age: Math.max(0, prevData.Age),
+        Pregnancies: Math.max(0, Math.round(prevData.Pregnancies)),
+        Glucose: Math.max(0, Math.round(prevData.Glucose)),
+        BloodPressure: Math.max(0, Math.round(prevData.BloodPressure)),
+        SkinThickness: Math.max(0, Math.round(prevData.SkinThickness)),
+        Insulin: Math.max(0, Math.round(prevData.Insulin)),
+        BMI: Math.max(0, prevData.BMI),
+        DiabetesPedigreeFunction: Math.max(0, prevData.DiabetesPedigreeFunction),
+        Age: Math.max(0, Math.round(prevData.Age)),
       }));
     }, 1500);
 
     return () => clearTimeout(timer); // Clean up timer
   }, [formData.Pregnancies, formData.Glucose, formData.BloodPressure, formData.SkinThickness, formData.Insulin, formData.Bmi, formData.DiabetesPedigreeFunction, formData.Age, ]);
+
+  const [resultString, setResultString] = useState("")
 
   // function to submit the form and call the API
   const handleSubmit = async (event) => {
@@ -60,7 +62,8 @@ const ML_DiabetesPrediction = () => {
       });
 
       const result = await response.json();
-      alert(`The Person${(result.prediction === 0) ? 'does not have' : 'has'} Diabetes`);
+      setResultString(`The Person is predicted to ${(result.prediction === 0) ? 'not have' : 'have'} Diabetes`)
+      alert(`The Person is predicted to ${(result.prediction === 0) ? 'not have' : 'have'} Diabetes`);
     } catch (error) {
       console.error("Error:", error);
       alert("Something went wrong!");
@@ -74,12 +77,12 @@ const ML_DiabetesPrediction = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-mydark2 lg:ml-64 mt-12 py-12">
+    <div className="flex flex-col items-center min-h-screen bg-mydark2 lg:ml-64 mt-12 py-12 gap-4">
 
       {/* Some info about the model */}
       <PageTextArea 
-        heading={'Student Performance Model'}
-        body={"The Diabetes Prediction model for pregnant women uses medical features like glucose levels, BMI, Pregnancies , BloodPressure, SkinThickness, Insulin, Diabetes-Pedigree-Function, Age to classify diabetes risk, achieving an accuracy of 77%. It leverages SK Learns's 'Support Vector Classification' a classifier model optimized for healthcare applications, focusing on recall to minimize missed cases."}
+        heading={'Diabetes Prediction Model'}
+        body={"The Diabetes Prediction model is designed for pregnant women and utilizes clinical parameters such as glucose levels, BMI, number of pregnancies, blood pressure, skin thickness, insulin levels, diabetes pedigree function, and age to classify diabetes risk, achieving an accuracy of 77%. It leverages Scikit-learn's Support Vector Classification, a classifier model optimized for healthcare applications, with a focus on recall to minimize missed cases."}
         developedBy={'Saurabh'}
       />
 
@@ -172,9 +175,17 @@ const ML_DiabetesPrediction = () => {
         />
 
         {/* Button - Form Submit */}
-        <FormSubmitButton name={'Predict Maths Score'} />
+        <FormSubmitButton name={'Predict for Diabetes'} />
         
       </form>
+
+      {resultString !== "" && (
+        <PageTextArea 
+          heading={'Prediction Result'}
+          body={resultString}
+          isResult={true}
+        />
+      )}
     </div>
   );
 };
