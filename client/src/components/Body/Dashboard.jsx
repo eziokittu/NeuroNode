@@ -3,7 +3,7 @@ import PageTextArea from "../Reusable/PageTextArea";
 
 const Dashboard = () => {
   return (
-    <div className="flex flex-col items-center  min-h-screen bg-mydark2 mt-12 py-12 lg:ml-64">
+    <div className="flex flex-col items-center  min-h-screen bg-mydark2 mt-12 py-12 gap-4 lg:ml-64">
       <PageTextArea
         heading={"Dashboard"}
         body={
